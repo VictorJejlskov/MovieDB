@@ -3,6 +3,7 @@ import {
   getServerSession,
   type NextAuthOptions,
   type DefaultSession,
+  DefaultUser,
 } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
@@ -21,30 +22,53 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      role: UserRole
-      // ...other properties
-      // role: UserRole;
+      role: UserRole;
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User extends DefaultUser {
+    id: string;
+    role: UserRole;
+  }
 }
+
+// interface User {
+//   // ...other properties
+//   // role: UserRole;
+// }
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
  * @see https://next-auth.js.org/configuration/options
  */
+
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session({ session, user }) {
+    session: function ({ session, user }) {
       if (session.user) {
-        session.user.id = user.id;
-        session.user.role = user.role;
-        // session.user.role = user.role; <-- put other properties on the session here
+        const customUser = user as { id: string; role: UserRole };
+
+        type CustomSession = {
+          expires: typeof session.expires;
+          user: {
+            id: string;
+            role: UserRole;
+            name?: string | null | undefined;
+            email?: string | null | undefined;
+            image?: string | null | undefined;
+          };
+        };
+
+        const customSession: CustomSession = {
+          ...session,
+          user: {
+            ...session.user,
+            id: customUser.id,
+            role: customUser.role,
+          },
+        };
+        return customSession;
       }
       return session;
     },
@@ -56,10 +80,10 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.DISCORD_CLIENT_SECRET,
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
-    })
-    
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
+
     /**
      * ...add more providers here.
      *
