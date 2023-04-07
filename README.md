@@ -33,3 +33,6 @@ prisma migrate dev --name init
 
 //To generate the types :)
 prisma generate
+
+//To start local DB
+docker-compose up -d
