@@ -59,7 +59,7 @@ const Home: NextPage = () => {
     </>
   );
 };
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  return await validateNoSession(context, "/dashboard");
-}
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//   return await validateNoSession(context, "/");
+// }
 export default Home;

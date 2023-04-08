@@ -28,7 +28,7 @@ const MovieList = () => {
   if (error) return <p>Error: something went wrong =)</p>;
   return (
     <div>
-      <div className="grid grid-cols-6">
+      <div className="grid grid-cols-3">
         {data?.results.map((movie) => (
           <div className="">
             <MovieCard movieData={movie} key={movie.id} />
