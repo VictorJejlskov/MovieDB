@@ -36,3 +36,7 @@ export interface MovieTrailerResponse {
   published_at: string;
   id: string;
 }
+export interface Genre {
+  id: number;
+  name: string;
+}

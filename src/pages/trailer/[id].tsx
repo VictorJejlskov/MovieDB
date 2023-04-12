@@ -15,12 +15,8 @@ const Trailer = () => {
   const { data, isLoading, error } = useQuery(
     ["movie-trailers", id],
     async () => {
-      return (
-        await axios.get(
-          `http://localhost:3000/api/movies/trailers?id=${id}`,
-          {}
-        )
-      ).data as MovieTrailerListResponse;
+      return (await axios.get(`/api/movies/trailers?id=${id}`, {}))
+        .data as MovieTrailerListResponse;
     },
     {
       enabled: !!id,
@@ -29,7 +25,6 @@ const Trailer = () => {
   );
 
   useEffect(() => {
-    console.log("Effect called");
     if (data) {
       let temp = data;
       temp.results = temp.results.filter((trailer) => {
@@ -38,7 +33,6 @@ const Trailer = () => {
       });
       setChosenMovie(temp.results[0] as MovieTrailerResponse);
       setTrailers(temp);
-      console.log("SetTrailer called");
     }
   }, [data]);
   if (!id) return null;

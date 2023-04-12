@@ -3,17 +3,21 @@ import { GetServerSidePropsContext } from "next";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { validateSession } from "~/server/clientAuth";
-import { MovieListResponse } from "~/types/movies";
+import { Genre, MovieListResponse } from "~/types/movies";
 import MovieCard from "../molecules/movieCard";
 
 const MovieList = () => {
   const [page, setPage] = useState<number>(1);
   const [sortBy, setSortBy] = useState<string | null>(null);
-  const { data, isLoading, error } = useQuery(
+  const {
+    data: movies,
+    isLoading: moviesLoading,
+    error: moviesError,
+  } = useQuery(
     ["movie-list", page],
     async () => {
       return (
-        await axios.get(`http://localhost:3000/api/movies/`, {
+        await axios.get(`/api/movies/`, {
           params: {
             page: page.toString(),
             sort_by: sortBy,
@@ -23,15 +27,27 @@ const MovieList = () => {
     }
     //TODO { staleTime: 1000 }
   );
+  const {
+    data: genres,
+    isLoading: genresLoading,
+    error: genresError,
+  } = useQuery(
+    "movie-genres",
+    async () => {
+      return (await axios.get(`/api/movies/genres`, {})).data as Genre[];
+    }
+    //TODO { staleTime: 1000 }
+  );
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: something went wrong =)</p>;
+  if (moviesLoading || genresLoading) return <p>Loading...</p>;
+  if (moviesError || genresError || !genres)
+    return <p>Error: something went wrong =)</p>;
   return (
     <div>
       <div className="grid grid-cols-3">
-        {data?.results.map((movie) => (
-          <div className="" key={movie.id} >
-            <MovieCard movieData={movie} />
+        {movies?.results.map((movie) => (
+          <div className="" key={movie.id}>
+            <MovieCard movieData={movie} genres={genres} />
           </div>
         ))}
       </div>
