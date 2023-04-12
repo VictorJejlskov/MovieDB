@@ -30,8 +30,8 @@ const MovieList = () => {
     <div>
       <div className="grid grid-cols-3">
         {data?.results.map((movie) => (
-          <div className="">
-            <MovieCard movieData={movie} key={movie.id} />
+          <div className="" key={movie.id} >
+            <MovieCard movieData={movie} />
           </div>
         ))}
       </div>

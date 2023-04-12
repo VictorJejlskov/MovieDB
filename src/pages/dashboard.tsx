@@ -1,8 +1,8 @@
 import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import { signOut } from "next-auth/react";
-import Page from "~/components/atoms/templates/page";
-import MovieList from "~/components/organisms/movieList";
+import Page from "~/components/templates/page";
+import MovieList from "~/components/templates/movieList";
 import { validateSession } from "~/server/clientAuth";
 
 const Dashboard = () => {

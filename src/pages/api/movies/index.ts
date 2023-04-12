@@ -8,8 +8,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const session = await getServerAuthSession({ req, res });
-  if (!session || !session.user)
-    res.status(403).json({ message: "Not permitted!" });
+  // if (!session || !session.user)
+  //   res.status(403).json({ message: "Not permitted!" });
   switch (req.method) {
     case "GET":
       const validatedQueryParams = movieQueryParamsSchema.parse(req.query);
