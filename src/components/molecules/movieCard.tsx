@@ -10,6 +10,7 @@ interface MovieCardProps {
 }
 const MovieCard = (props: MovieCardProps) => {
   const { movieData: movie, genres: genres } = props;
+  // console.log(genres);
   return (
     <div className="flex">
       <div className="flex-col">

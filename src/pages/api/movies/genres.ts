@@ -11,8 +11,10 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
-      const trailers = await getApiMovieRequest(`genre/movie/list`);
-      res.status(200).send(trailers);
+      const genres = await getApiMovieRequest(`genre/movie/list`);
+      console.log(genres);
+      res.status(200).send(genres);
+
       break;
     default:
       res.status(400).json({ message: "Invalid request method" });

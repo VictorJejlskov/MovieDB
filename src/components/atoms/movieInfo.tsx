@@ -1,4 +1,3 @@
-import useGenres from "~/hooks/useGenres";
 import { Genre, MovieResult } from "~/types/movies";
 
 interface InfoProps {
@@ -7,7 +6,7 @@ interface InfoProps {
 }
 const MovieInfo = (props: InfoProps) => {
   const { movie: movie, genres: genreList } = props;
-  console.log(genreList);
+  // console.log(genreList);
   return (
     <div>
       {movie.title}

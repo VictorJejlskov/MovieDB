@@ -1,9 +1,7 @@
 import axios from "axios";
-import { GetServerSidePropsContext } from "next";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { validateSession } from "~/server/clientAuth";
-import { Genre, MovieListResponse } from "~/types/movies";
+import { GenreListResponse, MovieListResponse } from "~/types/movies";
 import MovieCard from "../molecules/movieCard";
 
 const MovieList = () => {
@@ -24,8 +22,10 @@ const MovieList = () => {
           },
         })
       ).data as MovieListResponse;
+    },
+    {
+      refetchOnWindowFocus: false,
     }
-    //TODO { staleTime: 1000 }
   );
   const {
     data: genres,
@@ -34,20 +34,23 @@ const MovieList = () => {
   } = useQuery(
     "movie-genres",
     async () => {
-      return (await axios.get(`/api/movies/genres`, {})).data as Genre[];
+      return (await axios.get(`/api/movies/genres`)).data as GenreListResponse;
+    },
+    {
+      refetchOnWindowFocus: false,
     }
-    //TODO { staleTime: 1000 }
   );
 
   if (moviesLoading || genresLoading) return <p>Loading...</p>;
   if (moviesError || genresError || !genres)
     return <p>Error: something went wrong =)</p>;
+  // console.log(genres.results);
   return (
     <div>
       <div className="grid grid-cols-3">
         {movies?.results.map((movie) => (
           <div className="" key={movie.id}>
-            <MovieCard movieData={movie} genres={genres} />
+            <MovieCard movieData={movie} genres={genres.results} />
           </div>
         ))}
       </div>

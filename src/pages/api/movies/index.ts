@@ -17,6 +17,7 @@ export default async function handler(
         "discover/movie",
         validatedQueryParams
       );
+      console.log(movies);
       res.status(200).send(movies);
       break;
     default:
