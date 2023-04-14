@@ -11,7 +11,7 @@ const MovieInfo = (props: InfoProps) => {
   return (
     <div className="grid h-full grid-rows-6">
       <div className="row-span-5">
-        <p className="text-bold truncate pt-4 text-center text-2xl font-extrabold">
+        <p className="text-bold pt-4 text-center text-2xl font-extrabold line-clamp-1">
           {movie.title} ({movie.release_date.split("-")[0]})
         </p>
         <hr className="bg-base-850 my-3 h-px border-t-0  bg-gradient-to-r from-base-900 via-base-500 to-base-900 opacity-100" />
@@ -20,13 +20,15 @@ const MovieInfo = (props: InfoProps) => {
       </div>
 
       <div className="row-span-1">
-        <div className="place-items-left grid grid-cols-6">
+        <div className="grid grid-cols-6">
           <div className="col-span-4 flex">
             <FavouriteStarButton movieId={movie.id} />
             Rating: {movie.vote_average.toPrecision(2)}/10 | Votes:{" "}
             {movie.vote_count}
           </div>
-          <MovieRatingStars rating={movie.vote_average} />
+          <div className="col-span-2 flex">
+            <MovieRatingStars rating={movie.vote_average} />
+          </div>
         </div>
       </div>
     </div>

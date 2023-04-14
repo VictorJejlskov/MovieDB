@@ -27,7 +27,7 @@ const MovieCard = (props: MovieCardProps) => {
   return (
     <div className="p-8">
       <div className="grid grid-cols-4 rounded-lg bg-base-800">
-        <div className="col-span-1">
+        <div className="col-span-1 mx-auto">
           <MovieImage path={data.poster_path} movieId={movie.id} />
         </div>
         <div className="col-span-3">

@@ -9,12 +9,12 @@ const MovieImage = (props: MovieImageProps) => {
   const posterBasePath = "https://image.tmdb.org/t/p/w185_and_h278_bestv2";
   const { path, movieId } = props;
   return (
-    <div className="">
+    <div className="mx-2">
       <img
         src={posterBasePath + path}
-        className="m-auto mr-3 w-[90%] -translate-y-3 rounded-xl border-4 border-white"
+        className="-translate-y-3 rounded-t-xl border-4 border-white"
       />
-      <div className="-mb-1 -translate-y-3 text-center">
+      <div className="-mb-1 -translate-y-3">
         <MovieTrailerButton movieId={movieId} />
       </div>
     </div>
