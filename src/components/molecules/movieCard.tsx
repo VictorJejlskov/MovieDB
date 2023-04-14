@@ -1,27 +1,38 @@
-import { Genre, MovieResult } from "~/types/movies";
+import { MovieDetailsResponse, MovieResult } from "~/types/movies";
 import MovieImage from "../atoms/movieImage";
-import FavouriteStarButton from "../atoms/favouriteStarButton";
+import FavouriteStarButton from "../atoms/favouriteHeartButton";
 import MovieTrailerButton from "../atoms/movieTrailerButton";
 import MovieInfo from "../atoms/movieInfo";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 interface MovieCardProps {
   movieData: MovieResult;
-  genres: Genre[];
 }
 const MovieCard = (props: MovieCardProps) => {
-  const { movieData: movie, genres: genres } = props;
+  const { movieData: movie } = props;
+  const { data, isLoading, error } = useQuery(
+    "movie-details" + movie.id,
+    async () => {
+      return (await axios.get(`/api/movies/details?id=${movie.id}`, {}))
+        .data as MovieDetailsResponse;
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+  if (isLoading) return <p>Loading...</p>;
+  if (error || !data) return <p>Error: something went wrong =)</p>;
   // console.log(genres);
   return (
-    <div className="flex">
-      <div className="flex-col">
-        <MovieImage path={movie.poster_path} />
-        <div className="flex">
-          <FavouriteStarButton movieId={movie.id} />
-          <MovieTrailerButton movieId={movie.id} />
+    <div className="p-8">
+      <div className="grid grid-cols-4 rounded-lg bg-base-800">
+        <div className="col-span-1">
+          <MovieImage path={data.poster_path} movieId={movie.id} />
         </div>
-      </div>
-      <div className="flex-col">
-        <MovieInfo movie={movie} genres={genres} />
+        <div className="col-span-3">
+          <MovieInfo movie={data} />
+        </div>
       </div>
     </div>
   );

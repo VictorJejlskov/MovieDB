@@ -42,5 +42,14 @@ export default {
       white: "#ffffff",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp"), require("daisyui")],
+  daisyui: {
+    styled: true,
+    themes: false,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+  },
 } satisfies Config;

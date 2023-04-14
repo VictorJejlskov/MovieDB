@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { GenreListResponse, MovieListResponse } from "~/types/movies";
+import { MovieListResponse } from "~/types/movies";
 import MovieCard from "../molecules/movieCard";
 
 const MovieList = () => {
@@ -27,30 +27,17 @@ const MovieList = () => {
       refetchOnWindowFocus: false,
     }
   );
-  const {
-    data: genres,
-    isLoading: genresLoading,
-    error: genresError,
-  } = useQuery(
-    "movie-genres",
-    async () => {
-      return (await axios.get(`/api/movies/genres`)).data as GenreListResponse;
-    },
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
 
-  if (moviesLoading || genresLoading) return <p>Loading...</p>;
-  if (moviesError || genresError || !genres)
-    return <p>Error: something went wrong =)</p>;
+  if (moviesLoading) return <p>Loading...</p>;
+  if (moviesError) return <p>Error: something went wrong =)</p>;
+
   // console.log(genres.results);
   return (
     <div>
-      <div className="grid grid-cols-3">
+      <div className="grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         {movies?.results.map((movie) => (
           <div className="" key={movie.id}>
-            <MovieCard movieData={movie} genres={genres.results} />
+            <MovieCard movieData={movie} />
           </div>
         ))}
       </div>
