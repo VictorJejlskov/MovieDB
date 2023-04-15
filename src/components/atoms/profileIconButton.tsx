@@ -1,9 +1,13 @@
-const ProfileIconButton = () => {
+interface ProfileIconProps {
+  path: string;
+}
+const ProfileIconButton = (props: ProfileIconProps) => {
+  const { path } = props;
   return (
-    <div className="dropdown dropdown-end">
+    <div className="dropdown-end dropdown">
       <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
         <div className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <img src={path} />
         </div>
       </label>
       <ul

@@ -2,7 +2,11 @@ import NavMenuButton from "../atoms/navMenuButton";
 import ProfileIconButton from "../atoms/profileIconButton";
 import SearchButton from "../atoms/searchButton";
 
-const NavBar = () => {
+interface NavBarProps {
+  imgPath: string;
+}
+const NavBar = (props: NavBarProps) => {
+  const { imgPath } = props;
   return (
     <div className="navbar sticky top-0 z-50 bg-base-400">
       <div className="navbar-start">
@@ -13,7 +17,7 @@ const NavBar = () => {
       </div>
       <div className="navbar-end">
         <SearchButton />
-        <ProfileIconButton />
+        <ProfileIconButton path={imgPath} />
       </div>
     </div>
   );
