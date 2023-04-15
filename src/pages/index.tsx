@@ -3,7 +3,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { validateNoSession } from "~/server/clientAuth";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -55,7 +54,7 @@ const Home: NextPage = () => {
             {sessionData ? "Sign out" : "Sign in"}
           </button>
           <button
-            className="btn-primary btn"
+            className={sessionData ? "btn-primary btn" : "hidden"}
             onClick={() => void router.push("/dashboard")}
           >
             Dashboard

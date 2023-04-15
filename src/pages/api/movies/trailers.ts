@@ -8,8 +8,11 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
       const trailers = await getApiMovieRequest<MovieTrailerListResponse>(
-        `/movie/${typeof req.query.id === "string" ? req.query.id : ""}`
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        `movie/${req.query.id}/videos`
       );
       res.status(200).send(trailers);
       break;

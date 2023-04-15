@@ -37,14 +37,24 @@ const Trailer = () => {
     }
   }, [data]);
   if (!id) return null;
-  if (isLoading) return <p>Loading...</p>;
-  if (error || !chosenMovie) return <p>Error: something went wrong =)</p>;
+  if (isLoading)
+    return (
+      <Page title="Trailer">
+        <p>Loading..</p>
+      </Page>
+    );
+  if (error || !chosenMovie)
+    return (
+      <Page title="Trailer">
+        <p>Error: something went wrong =)</p>
+      </Page>
+    );
   return (
     <Page title="Trailer">
       <div className="">
         <YoutubeEmbed embedKey={chosenMovie.key} />
       </div>
-      <div className="flex">
+      <div className="flex w-full place-content-center">
         {trailers?.results.map((trailer) => (
           <div
             className="w-10 rounded-full bg-primary text-center"
