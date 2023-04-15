@@ -9,7 +9,8 @@ interface PageProps {
 
 const Page = (props: PageProps) => {
   const { data: session, status } = useSession();
-  const path = session?.user.image!;
+  const path = session?.user.image;
+  if (!path) return <p>Loading..</p>;
   return (
     <>
       <Head>
