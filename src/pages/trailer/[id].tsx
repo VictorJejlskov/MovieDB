@@ -8,19 +8,15 @@ import { MovieTrailerListResponse, MovieTrailerResponse } from "~/types/movies";
 
 const Trailer = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const id = router.query.id! as string; // Use non-null assertion operator to guarantee that id is a string
   const [chosenMovie, setChosenMovie] = useState<MovieTrailerResponse>();
   const [trailers, setTrailers] = useState<MovieTrailerListResponse>();
 
   const { data, isLoading, error } = useQuery(
     ["movie-trailers", id],
     async () => {
-      return (
-        await axios.get(
-          `/api/movies/trailers?id=${typeof id === "string" ? id : ""}`,
-          {}
-        )
-      ).data as MovieTrailerListResponse;
+      return (await axios.get(`/api/movies/trailers?id=${id}`, {}))
+        .data as MovieTrailerListResponse;
     },
     {
       enabled: !!id,
@@ -30,7 +26,8 @@ const Trailer = () => {
 
   useEffect(() => {
     if (data) {
-      const temp = data;
+      /* eslint-disable prefer-const */
+      let temp = data;
       temp.results = temp.results.filter((trailer) => {
         if (trailer.type == "Trailer" || trailer.type == "Featurette")
           return trailer;

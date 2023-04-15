@@ -15,7 +15,9 @@ const Page = (props: PageProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <div className="h-full bg-base-950 text-base-300">{props.children}</div>
+      <div className="min-w-screen max-w-screen h-full min-h-screen bg-base-950 text-base-300">
+        {props.children}
+      </div>
     </>
   );
 };
