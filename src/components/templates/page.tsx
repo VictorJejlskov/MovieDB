@@ -19,7 +19,7 @@ const Page = (props: PageProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar imgPath={path} />
-      <div className="min-w-screen max-w-screen h-full min-h-screen bg-base-950 text-base-300">
+      <div className="min-w-screen max-w-screen h-full min-h-screen overflow-hidden bg-base-950 text-base-300">
         {props.children}
       </div>
     </>

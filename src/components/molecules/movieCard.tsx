@@ -21,7 +21,15 @@ const MovieCard = (props: MovieCardProps) => {
       refetchOnWindowFocus: false,
     }
   );
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="p-8">
+        <div className="grid grid-cols-4 rounded-lg bg-base-800">
+          <div className="col-span-1 mx-auto"></div>
+          <div className="col-span-3"></div>
+        </div>
+      </div>
+    );
   if (error || !data) return <p>Error: something went wrong =)</p>;
   // console.log(genres);
   return (

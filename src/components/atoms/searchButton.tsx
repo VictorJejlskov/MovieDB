@@ -4,17 +4,14 @@ const SearchButton = () => {
   const [searchToggled, setSearchToggled] = useState(true);
 
   return (
-    <div>
+    <div className="flex">
       <input
         type="text"
         className={
           searchToggled
             ? "w-0"
-            : "w-80 transition-all duration-[600ms] ease-out"
+            : "input-primary input mr-3 max-h-[80%] w-80 transition-all duration-[600ms] ease-out"
         }
-        onBlur={() => {
-          setSearchToggled(!searchToggled);
-        }}
       />
       <button
         className="btn-ghost btn-circle btn"
