@@ -12,7 +12,7 @@ interface MovieCardProps {
 const MovieCard = (props: MovieCardProps) => {
   const { movieData: movie } = props;
   const { data, isLoading, error } = useQuery(
-    "movie-details" + movie.id,
+    "movie-details" + movie.id.toString(),
     async () => {
       return (await axios.get(`/api/movies/details?id=${movie.id}`, {}))
         .data as MovieDetailsResponse;

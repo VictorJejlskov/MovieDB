@@ -1,7 +1,7 @@
 import MovieTrailerButton from "./movieTrailerButton";
 
 interface MovieImageProps {
-  path: string | null;
+  path: string;
   movieId: number;
 }
 

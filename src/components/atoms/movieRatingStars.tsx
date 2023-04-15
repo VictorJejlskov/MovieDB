@@ -13,27 +13,27 @@ const MovieRatingStars = (props: RatingInterface) => {
   };
 
   return (
-    <div className="pointer-event-none rating rating-half rating-lg">
-      <input type="radio" name="rating-10" className={getClassLeft(0.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(1)} />
-      <input type="radio" name="rating-10" className={getClassLeft(1.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(2)} />
-      <input type="radio" name="rating-10" className={getClassLeft(2.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(3)} />
-      <input type="radio" name="rating-10" className={getClassLeft(3.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(4)} />
-      <input type="radio" name="rating-10" className={getClassLeft(4.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(5)} />
-      <input type="radio" name="rating-10" className={getClassLeft(5.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(6)} />
-      <input type="radio" name="rating-10" className={getClassLeft(6.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(7)} />
-      <input type="radio" name="rating-10" className={getClassLeft(7.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(8)} />
-      <input type="radio" name="rating-10" className={getClassLeft(8.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(9)} />
-      <input type="radio" name="rating-10" className={getClassLeft(9.5)} />
-      <input type="radio" name="rating-10" className={getClassRight(10)} />
+    <div className="pointer-event-none rating rating-half rating-lg w-[40%]">
+      <input type="radio" name="rating-10" className={getClassLeft(0.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(0.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(1.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(1.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(2.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(2.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(3.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(3.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(4.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(4.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(5.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(5.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(6.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(6.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(7.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(7.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(8.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(8.75)} />
+      <input type="radio" name="rating-10" className={getClassLeft(9.25)} />
+      <input type="radio" name="rating-10" className={getClassRight(9.75)} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 interface EmbedProps {
-  embedKey: string | undefined;
+  embedKey: string;
 }
 const YoutubeEmbed = (props: EmbedProps) => {
   const { embedKey: key } = props;

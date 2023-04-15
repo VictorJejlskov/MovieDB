@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 import { getServerAuthSession } from "~/server/auth";
 import { getApiMovieRequest } from "~/server/movieapi";
+import { MovieListResponse } from "~/types/movies";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +14,8 @@ export default async function handler(
   switch (req.method) {
     case "GET":
       const validatedQueryParams = movieQueryParamsSchema.parse(req.query);
-      const movies = await getApiMovieRequest(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const movies = await getApiMovieRequest<MovieListResponse>(
         "discover/movie",
         validatedQueryParams
       );

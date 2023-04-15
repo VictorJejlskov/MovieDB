@@ -10,7 +10,7 @@ const MovieTrailerButton = (props: TrailerProps) => {
     <div className="">
       <button
         onClick={() => {
-          router.push(`/trailer/${id}`);
+          void router.push(`/trailer/${id}`);
         }}
         className="w-full rounded-b-lg bg-base-600 text-accent"
       >

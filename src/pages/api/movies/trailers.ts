@@ -1,9 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { z } from "zod";
-import { prisma } from "../../../server/db";
-import axios from "axios";
-import { env } from "~/env.mjs";
 import { getApiMovieRequest } from "~/server/movieapi";
+import { MovieTrailerListResponse } from "~/types/movies";
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +8,9 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
-      const trailers = await getApiMovieRequest(`movie/${req.query.id}/videos`);
+      const trailers = await getApiMovieRequest<MovieTrailerListResponse>(
+        `/movie/${typeof req.query.id === "string" ? req.query.id : ""}`
+      );
       res.status(200).send(trailers);
       break;
     default:

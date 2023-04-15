@@ -40,6 +40,7 @@ export default {
         "950": "#030712",
       },
       white: "#ffffff",
+      black: "#000000",
     },
   },
   plugins: [require("@tailwindcss/line-clamp"), require("daisyui")],

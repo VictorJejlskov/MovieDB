@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getApiMovieRequest } from "~/server/movieapi";
+import { MovieDetailsResponse } from "~/types/movies";
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,7 +8,10 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "GET":
-      const details = await getApiMovieRequest(`/movie/${req.query.id}`);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const details = await getApiMovieRequest<MovieDetailsResponse>(
+        `/movie/${typeof req.query.id === "string" ? req.query.id : ""}`
+      );
       res.status(200).send(details);
       break;
     default:

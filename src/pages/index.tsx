@@ -54,6 +54,12 @@ const Home: NextPage = () => {
           >
             {sessionData ? "Sign out" : "Sign in"}
           </button>
+          <button
+            className="btn-primary btn"
+            onClick={() => void router.push("/dashboard")}
+          >
+            Dashboard
+          </button>
         </div>
       </main>
     </>
