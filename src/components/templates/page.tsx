@@ -1,6 +1,7 @@
 import Head from "next/head";
 import NavBar from "../molecules/navBar";
 import { useSession } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
 
 interface PageProps {
   title: string;
@@ -22,6 +23,7 @@ const Page = (props: PageProps) => {
           <NavBar imgPath={""} />
           <div className="text-base-300">{props.children}</div>
         </div>
+        <ToastContainer />
       </>
     );
   return (
@@ -35,6 +37,7 @@ const Page = (props: PageProps) => {
         <NavBar imgPath={path} />
         <div className="text-base-300">{props.children}</div>
       </div>
+      <ToastContainer />
     </>
   );
 };

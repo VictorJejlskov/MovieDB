@@ -25,7 +25,6 @@ const MovieCardPlaceholder = () => {
             <p className="text-bold line-clamp-1 text-center text-xl font-extrabold">
               Lorem Ipsum
             </p>
-            <hr className="bg-base-850 my-3 h-px border-t-0  bg-gradient-to-r from-base-900 via-base-500 to-base-900 opacity-100" />
             <p className="line-clamp-5">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -35,13 +34,6 @@ const MovieCardPlaceholder = () => {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum
             </p>
-          </div>
-          <div className="">
-            <div className="absolute bottom-1 flex place-items-center">
-              <div className="">
-                <div className="pl-2 "></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

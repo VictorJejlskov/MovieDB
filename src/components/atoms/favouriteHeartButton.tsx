@@ -1,10 +1,11 @@
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
 interface FavouriteProps {
   movieId: number;
   isFavourite: boolean;
-  onAddToFavourites: (id: string) => void;
+  onAddToFavourites: (id: string, isFavourite: boolean) => void;
 }
 const FavouriteHeartButton = (props: FavouriteProps) => {
   const { movieId: id, isFavourite, onAddToFavourites } = props;
@@ -13,7 +14,7 @@ const FavouriteHeartButton = (props: FavouriteProps) => {
   );
 
   const handleClick = () => {
-    onAddToFavourites(id.toString());
+    onAddToFavourites(id.toString(), isFavourite);
     setHeartColor(isFavourite ? "#ffffff" : "#af2b62");
   };
   return (
