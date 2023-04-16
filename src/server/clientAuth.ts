@@ -1,5 +1,4 @@
-import { UserRole } from "@prisma/client";
-import { GetServerSidePropsContext } from "next";
+import type { GetServerSidePropsContext } from "next";
 import { getSession } from "next-auth/react";
 
 export async function validateSession(context: GetServerSidePropsContext) {

@@ -1,11 +1,24 @@
+import { HeartIcon } from "@heroicons/react/24/solid";
+
 interface FavouriteProps {
   movieId: number;
+  isFavourite: boolean;
+  onAddToFavourites: (id: string) => void;
 }
 const FavouriteHeartButton = (props: FavouriteProps) => {
-  const { movieId: id } = props;
+  const handleClick = () => {
+    onAddToFavourites(id.toString());
+  };
+  const { movieId: id, isFavourite, onAddToFavourites } = props;
   return (
-    <div>
-      <div className=""></div>
+    <div className="">
+      <HeartIcon
+        width={25}
+        className=""
+        color={isFavourite ? "#af2b62" : "#ffffff"}
+        stroke="#ffffff"
+        onClick={handleClick}
+      />
     </div>
   );
 };

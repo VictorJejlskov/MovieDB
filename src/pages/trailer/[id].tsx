@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import YoutubeEmbed from "~/components/atoms/youtubeEmbed";
 import Page from "~/components/templates/page";
-import { MovieTrailerListResponse, MovieTrailerResponse } from "~/types/movies";
+import type {
+  MovieTrailerListResponse,
+  MovieTrailerResponse,
+} from "~/types/movies";
 
 const Trailer = () => {
   const router = useRouter();

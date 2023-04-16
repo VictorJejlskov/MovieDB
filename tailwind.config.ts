@@ -43,7 +43,7 @@ export default {
       black: "#000000",
     },
   },
-  plugins: [require("@tailwindcss/line-clamp"), require("daisyui")],
+  plugins: [require("daisyui")],
   daisyui: {
     styled: true,
     themes: false,

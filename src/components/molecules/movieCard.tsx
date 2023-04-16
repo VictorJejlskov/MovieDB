@@ -1,16 +1,25 @@
-import { MovieDetailsResponse, MovieResult } from "~/types/movies";
+import type {
+  FavouriteMovie,
+  MovieDetailsResponse,
+  MovieResult,
+} from "~/types/movies";
 import MovieImage from "../atoms/movieImage";
-import FavouriteStarButton from "../atoms/favouriteHeartButton";
-import MovieTrailerButton from "../atoms/movieTrailerButton";
 import MovieInfo from "../atoms/movieInfo";
 import { useQuery } from "react-query";
 import axios from "axios";
 
 interface MovieCardProps {
   movieData: MovieResult;
+  favourites: FavouriteMovie[];
+  onAddToFavourites: (id: string) => void;
 }
 const MovieCard = (props: MovieCardProps) => {
-  const { movieData: movie } = props;
+  const { movieData: movie, favourites, onAddToFavourites } = props;
+  const match = favourites.filter((fav) => {
+    return fav.movieId == movie.id.toString();
+  });
+  const isFavourite = match.length > 0;
+
   const { data, isLoading, error } = useQuery(
     "movie-details" + movie.id.toString(),
     async () => {
@@ -31,12 +40,16 @@ const MovieCard = (props: MovieCardProps) => {
       </div>
     );
   if (error || !data) return <p>Error: something went wrong =)</p>;
-  // console.log(genres);
   return (
     <div className="p-8">
       <div className="grid grid-cols-4 rounded-lg bg-base-800">
         <div className="col-span-1 mx-auto">
-          <MovieImage path={data.poster_path} movieId={movie.id} />
+          <MovieImage
+            path={data.poster_path}
+            movieId={movie.id}
+            isFavourite={isFavourite}
+            onAddToFavourites={onAddToFavourites}
+          />
         </div>
         <div className="col-span-3">
           <MovieInfo movie={data} />

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getApiMovieRequest } from "~/server/movieapi";
-import { MovieDetailsResponse } from "~/types/movies";
+import type { MovieDetailsResponse } from "~/types/movies";
 
 export default async function handler(
   req: NextApiRequest,

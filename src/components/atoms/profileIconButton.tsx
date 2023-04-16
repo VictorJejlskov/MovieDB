@@ -1,3 +1,6 @@
+import { signOut } from "next-auth/react";
+import Image from "next/image";
+
 interface ProfileIconProps {
   path: string;
 }
@@ -7,7 +10,7 @@ const ProfileIconButton = (props: ProfileIconProps) => {
     <div className="dropdown-end dropdown">
       <label tabIndex={0} className="btn-ghost btn-circle avatar btn">
         <div className="w-10 rounded-full">
-          <img src={path} />
+          <Image src={path} alt="Profile Icon" />
         </div>
       </label>
       <ul
@@ -15,7 +18,7 @@ const ProfileIconButton = (props: ProfileIconProps) => {
         className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
       >
         <li>
-          <a>Logout</a>
+          <button onClick={() => void signOut()}>Logout</button>
         </li>
       </ul>
     </div>

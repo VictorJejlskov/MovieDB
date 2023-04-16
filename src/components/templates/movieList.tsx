@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { MovieListResponse } from "~/types/movies";
+import type { FavouriteMovie, MovieListResponse } from "~/types/movies";
 import MovieCard from "../molecules/movieCard";
 
 const MovieList = () => {
   const [page, setPage] = useState<number>(1);
-  const [sortBy, setSortBy] = useState<string | null>(null);
+  const [sortBy] = useState<string | null>(null);
   const {
     data: movies,
     isLoading: moviesLoading,
@@ -27,17 +27,44 @@ const MovieList = () => {
       refetchOnWindowFocus: false,
     }
   );
+  const {
+    data: favourites,
+    isLoading: favouritesLoading,
+    error: favouritesError,
+    refetch: refetchFavourites,
+  } = useQuery(
+    ["movie-favourites"],
+    async () => {
+      return (await axios.get(`/api/movies/favourites`))
+        .data as FavouriteMovie[];
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+  const handleAddToFavourites = async (id: string) => {
+    await axios.get(`/api/movies/favourites/${id}`);
+    await refetchFavourites();
+    console.log(favourites);
+  };
+  if (moviesLoading || favouritesLoading || !favourites)
+    return <p>Loading...</p>;
+  if (moviesError || favouritesError)
+    return <p>Error: something went wrong =)</p>;
 
-  if (moviesLoading) return <p>Loading...</p>;
-  if (moviesError) return <p>Error: something went wrong =)</p>;
-
-  // console.log(genres.results);
   return (
     <div>
       <div className="grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         {movies?.results.map((movie) => (
           <div className="" key={movie.id}>
-            <MovieCard movieData={movie} />
+            <MovieCard
+              movieData={movie}
+              favourites={favourites}
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
+              onAddToFavourites={async (id: string) => {
+                await handleAddToFavourites(id);
+              }}
+            />
           </div>
         ))}
       </div>

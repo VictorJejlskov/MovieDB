@@ -1,6 +1,4 @@
-import axios from "axios";
-import { GetServerSidePropsContext } from "next";
-import { signOut } from "next-auth/react";
+import type { GetServerSidePropsContext } from "next";
 import Page from "~/components/templates/page";
 import MovieList from "~/components/templates/movieList";
 import { validateSession } from "~/server/clientAuth";
@@ -8,15 +6,7 @@ import { validateSession } from "~/server/clientAuth";
 const Dashboard = () => {
   return (
     <Page title="Dashboard">
-      <div>
-        <MovieList />
-      </div>
-      <button
-        className="text-black rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-        onClick={() => void signOut()}
-      >
-        Sign Out
-      </button>
+      <MovieList />
     </Page>
   );
 };
