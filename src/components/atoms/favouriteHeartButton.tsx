@@ -19,7 +19,7 @@ const FavouriteHeartButton = (props: FavouriteProps) => {
   return (
     <div className="">
       <HeartIcon
-        width={25}
+        width={35}
         className=""
         color={heartColor}
         stroke="#ffffff"

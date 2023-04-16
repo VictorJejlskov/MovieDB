@@ -53,8 +53,8 @@ const MovieList = () => {
     return <p>Error: something went wrong =)</p>;
 
   return (
-    <div>
-      <div className="grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+    <div className="mx-6 mt-6">
+      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         {movies?.results.map((movie) => (
           <div className="" key={movie.id}>
             <MovieCard

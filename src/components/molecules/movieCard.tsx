@@ -41,19 +41,17 @@ const MovieCard = (props: MovieCardProps) => {
     );
   if (error || !data) return <p>Error: something went wrong =)</p>;
   return (
-    <div className="p-8">
-      <div className="grid grid-cols-4 rounded-lg bg-base-800">
-        <div className="col-span-1 mx-auto">
-          <MovieImage
-            path={data.poster_path}
-            movieId={movie.id}
-            isFavourite={isFavourite}
-            onAddToFavourites={onAddToFavourites}
-          />
-        </div>
-        <div className="col-span-3">
-          <MovieInfo movie={data} />
-        </div>
+    <div className="grid grid-cols-3 rounded-lg bg-base-800">
+      <div className="col-span-1">
+        <MovieImage
+          path={data.poster_path}
+          movieId={movie.id}
+          isFavourite={isFavourite}
+          onAddToFavourites={onAddToFavourites}
+        />
+      </div>
+      <div className="col-span-2">
+        <MovieInfo movie={data} />
       </div>
     </div>
   );
