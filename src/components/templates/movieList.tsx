@@ -57,6 +57,7 @@ const MovieList = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
+      pauseOnFocusLoss: false,
       theme: "dark",
     });
   const handleAddToFavourites = async (
@@ -64,10 +65,10 @@ const MovieList = () => {
     movie: MovieResult,
     isFavourite: boolean
   ) => {
-    await axios.get(`/api/movies/favourites/${id}`);
-    await refetchFavourites();
     const stringToAdd = isFavourite ? "Removed: " : "Added: ";
     notify(stringToAdd + movie.title);
+    await axios.get(`/api/movies/favourites/${id}`);
+    await refetchFavourites();
   };
   const n = 15; // Or something else
 
