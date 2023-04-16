@@ -10,7 +10,13 @@ const MovieCardPlaceholder = () => {
               alt="Poster Image"
             />
           </div>
-          <div className="-mb-1 -translate-y-3"></div>
+          <div className="-mb-1 -translate-y-3">
+            <div className="">
+              <button className="w-full rounded-b-lg bg-base-600 text-accent">
+                Trailer
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div className="col-span-2">
