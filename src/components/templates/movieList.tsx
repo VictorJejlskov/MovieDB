@@ -41,7 +41,7 @@ const MovieList = () => {
   } = useQuery(
     ["movie-favourites"],
     async () => {
-      return (await axios.get(`/api/movies/favouritesxxx`))
+      return (await axios.get(`/api/movies/favourites`))
         .data as FavouriteMovie[];
     },
     {
