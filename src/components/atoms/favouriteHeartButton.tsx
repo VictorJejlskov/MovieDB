@@ -12,17 +12,25 @@ const FavouriteHeartButton = (props: FavouriteProps) => {
   const [heartColor, setHeartColor] = useState(
     isFavourite ? "#af2b62" : "#ffffff"
   );
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleClick = () => {
-    onAddToFavourites(id.toString(), isFavourite);
-    setHeartColor(isFavourite ? "#ffffff" : "#af2b62");
+    if (isDisabled) return;
+    setIsDisabled(true);
+    try {
+      onAddToFavourites(id.toString(), isFavourite);
+      setHeartColor(isFavourite ? "#ffffff" : "#af2b62");
+    } catch (error) {
+      console.error(error);
+    }
+    setTimeout(() => setIsDisabled(false), 5000); // enable after 1 second
   };
   return (
     <div className="">
       <HeartIcon
         width={35}
-        className=""
         color={heartColor}
+        className={isDisabled ? "" : "cursor-pointer"}
         stroke="#ffffff"
         onClick={handleClick}
       />
