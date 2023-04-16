@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 interface FavouriteProps {
   movieId: number;
   isFavourite: boolean;
-  onAddToFavourites: (id: string, isFavourite: boolean) => void;
+  onAddToFavourites: (id: string, isFavourite: boolean) => Promise<void>;
 }
 const FavouriteHeartButton = (props: FavouriteProps) => {
   const { movieId: id, isFavourite, onAddToFavourites } = props;
@@ -14,16 +14,16 @@ const FavouriteHeartButton = (props: FavouriteProps) => {
   );
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (isDisabled) return;
     setIsDisabled(true);
     try {
-      onAddToFavourites(id.toString(), isFavourite);
+      await onAddToFavourites(id.toString(), isFavourite);
       setHeartColor(isFavourite ? "#ffffff" : "#af2b62");
     } catch (error) {
-      console.error(error);
+      // Handle the error here
     }
-    setTimeout(() => setIsDisabled(false), 5000); // enable after 1 second
+    setIsDisabled(false);
   };
   return (
     <div className="">
@@ -32,6 +32,7 @@ const FavouriteHeartButton = (props: FavouriteProps) => {
         color={heartColor}
         className={isDisabled ? "" : "cursor-pointer"}
         stroke="#ffffff"
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onClick={handleClick}
       />
     </div>

@@ -5,7 +5,7 @@ interface MovieImageProps {
   path: string;
   movieId: number;
   isFavourite: boolean;
-  onAddToFavourites: (id: string, isFavourite: boolean) => void;
+  onAddToFavourites: (id: string, isFavourite: boolean) => Promise<void>;
 }
 
 const MovieImage = (props: MovieImageProps) => {

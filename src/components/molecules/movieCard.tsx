@@ -12,7 +12,7 @@ import MovieCardPlaceholder from "./movieCardPlaceholder";
 interface MovieCardProps {
   movieData: MovieResult;
   favourites: FavouriteMovie[];
-  onAddToFavourites: (id: string, isFavourite: boolean) => void;
+  onAddToFavourites: (id: string, isFavourite: boolean) => Promise<void>;
 }
 const MovieCard = (props: MovieCardProps) => {
   const { movieData: movie, favourites, onAddToFavourites } = props;

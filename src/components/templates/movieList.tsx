@@ -64,7 +64,7 @@ const MovieList = () => {
     id: string,
     movie: MovieResult,
     isFavourite: boolean
-  ) => {
+  ): Promise<void> => {
     const stringToAdd = isFavourite ? "Removed: " : "Added: ";
     notify(stringToAdd + movie.title);
     await axios.get(`/api/movies/favourites/${id}`);
@@ -96,7 +96,10 @@ const MovieList = () => {
               movieData={movie}
               favourites={favourites}
               // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onAddToFavourites={async (id: string, isFavourite: boolean) => {
+              onAddToFavourites={async (
+                id: string,
+                isFavourite: boolean
+              ): Promise<void> => {
                 await handleAddToFavourites(id, movie, isFavourite);
               }}
             />
