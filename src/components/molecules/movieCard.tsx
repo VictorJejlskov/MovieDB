@@ -7,6 +7,7 @@ import MovieImage from "../atoms/movieImage";
 import MovieInfo from "../atoms/movieInfo";
 import { useQuery } from "react-query";
 import axios from "axios";
+import MovieCardPlaceholder from "./movieCardPlaceholder";
 
 interface MovieCardProps {
   movieData: MovieResult;
@@ -32,11 +33,8 @@ const MovieCard = (props: MovieCardProps) => {
   );
   if (isLoading)
     return (
-      <div className="p-8">
-        <div className="grid grid-cols-4 rounded-lg bg-base-800">
-          <div className="col-span-1 mx-auto"></div>
-          <div className="col-span-3"></div>
-        </div>
+      <div className="w-full">
+        <MovieCardPlaceholder />
       </div>
     );
   if (error || !data) return <p>Error: something went wrong =)</p>;

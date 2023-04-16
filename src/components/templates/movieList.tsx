@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import type { FavouriteMovie, MovieListResponse } from "~/types/movies";
 import MovieCard from "../molecules/movieCard";
+import MovieCardPlaceholder from "../molecules/movieCardPlaceholder";
 
 const MovieList = () => {
   const [page, setPage] = useState<number>(1);
@@ -47,8 +48,22 @@ const MovieList = () => {
     await refetchFavourites();
     console.log(favourites);
   };
+  const n = 15; // Or something else
+
   if (moviesLoading || favouritesLoading || !favourites)
-    return <p>Loading...</p>;
+    return (
+      <p>
+        <div className="mx-6 mt-6">
+          <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+            {[...Array<number>(n)].map((e) => (
+              <div className="w-full" key={e}>
+                <MovieCardPlaceholder />
+              </div>
+            ))}
+          </div>
+        </div>
+      </p>
+    );
   if (moviesError || favouritesError)
     return <p>Error: something went wrong =)</p>;
 
