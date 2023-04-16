@@ -18,8 +18,8 @@ const FavouriteHeartButton = (props: FavouriteProps) => {
     if (isDisabled) return;
     setIsDisabled(true);
     try {
-      await onAddToFavourites(id.toString(), isFavourite);
       setHeartColor(isFavourite ? "#ffffff" : "#af2b62");
+      await onAddToFavourites(id.toString(), isFavourite);
     } catch (error) {
       // Handle the error here
     }
