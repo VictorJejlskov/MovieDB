@@ -1,6 +1,5 @@
 import MovieTrailerButton from "./movieTrailerButton";
 import FavouriteHeartButton from "./favouriteHeartButton";
-import Image from "next/image";
 
 interface MovieImageProps {
   path: string;
@@ -16,7 +15,7 @@ const MovieImage = (props: MovieImageProps) => {
   return (
     <div className="relative mx-2">
       <div className="">
-        <Image
+        <img
           src={posterBasePath + path}
           className="-translate-y-3 rounded-t-xl border-4 border-white"
           alt="Poster Image"
