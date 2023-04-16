@@ -48,25 +48,36 @@ const MovieList = () => {
       refetchOnWindowFocus: false,
     }
   );
-  const notify = (msg: string) =>
-    toast(msg, {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      pauseOnFocusLoss: false,
-      theme: "dark",
-    });
+  const notify = (id: string, movie: MovieResult, isFavourite: boolean) =>
+    toast.promise(
+      handleAddToFavourites(id, movie, isFavourite),
+      {
+        pending: isFavourite
+          ? `Removing ${movie.title} from favourites`
+          : `Adding ${movie.title} to favourites`,
+        success: isFavourite
+          ? `Removed ${movie.title}`
+          : `Added ${movie.title}`,
+        error: "ERROR D:",
+      },
+      {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false,
+        theme: "dark",
+      }
+    );
   const handleAddToFavourites = async (
     id: string,
     movie: MovieResult,
     isFavourite: boolean
   ): Promise<void> => {
     const stringToAdd = isFavourite ? "Removed " : "Added ";
-    notify(stringToAdd + movie.title);
     await axios.get(`/api/movies/favourites/${id}`);
     await refetchFavourites();
   };
@@ -100,7 +111,7 @@ const MovieList = () => {
                 id: string,
                 isFavourite: boolean
               ): Promise<void> => {
-                await handleAddToFavourites(id, movie, isFavourite);
+                await notify(id, movie, isFavourite);
               }}
             />
           </div>

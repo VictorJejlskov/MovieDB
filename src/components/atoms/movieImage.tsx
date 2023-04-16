@@ -20,7 +20,7 @@ const MovieImage = (props: MovieImageProps) => {
           className="w-full -translate-y-3 rounded-t-xl border-4 border-white"
           alt="Poster Image"
         />
-        <div className="absolute bottom-[13%] right-[4%] z-50">
+        <div className="absolute bottom-[13%] right-[4%] z-10">
           <FavouriteHeartButton
             movieId={movieId}
             isFavourite={isFavourite}

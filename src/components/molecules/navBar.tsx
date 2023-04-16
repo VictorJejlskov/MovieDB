@@ -10,7 +10,7 @@ const NavBar = (props: NavBarProps) => {
   const router = useRouter();
   const { imgPath } = props;
   return (
-    <div className="navbar sticky top-0 z-50 bg-base-400">
+    <div className="navbar sticky top-0 z-50 z-50 bg-base-400">
       <div className="navbar-start">
         <NavMenuButton />
         <button
