@@ -32,11 +32,11 @@ const MovieCardPlaceholder = () => {
             <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
             <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
             <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
-            <div className="absolute bottom-20 right-0">
+            <div className="w-full pt-2">
               <svg
                 aria-hidden="true"
                 role="status"
-                className="mr-3 h-[15%] w-[15%] animate-spin text-gray-500"
+                className="m-auto h-[10%] w-[10%] animate-spin text-gray-500"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
