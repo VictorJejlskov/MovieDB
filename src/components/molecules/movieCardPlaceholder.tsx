@@ -32,7 +32,7 @@ const MovieCardPlaceholder = () => {
             <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
             <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
             <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
-            <div className="w-full pt-2">
+            <div className="w-full">
               <svg
                 aria-hidden="true"
                 role="status"
