@@ -12,7 +12,7 @@ const YoutubeEmbed = (props: EmbedProps) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         title="Embedded youtube"
-        className="m-auto aspect-video w-[70%]"
+        className="m-auto aspect-video w-[60%] border-4 border-secondary"
       />
     </div>
   );

@@ -7,8 +7,8 @@ interface InfoProps {
 const MovieInfo = (props: InfoProps) => {
   const { movie: movie } = props;
   return (
-    <div className="relative grid h-full grid-rows-6 overflow-hidden pt-4">
-      <div className="row-span-6 ">
+    <div className="relative h-full overflow-hidden pt-4">
+      <div className="">
         <p className="text-bold line-clamp-1 text-center text-xl font-extrabold">
           {movie.title} ({movie.release_date.split("-")[0]})
         </p>

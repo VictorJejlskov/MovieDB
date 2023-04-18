@@ -10,7 +10,7 @@ interface FavouriteProps {
 const FavouriteHeartButton = (props: FavouriteProps) => {
   const { movieId: id, isFavourite, onAddToFavourites } = props;
   const [heartColor, setHeartColor] = useState(
-    isFavourite ? "#af2b62" : "#ffffff"
+    isFavourite ? "#D926AA" : "#ffffff"
   );
   const [isDisabled, setIsDisabled] = useState(false);
 

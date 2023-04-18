@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {},
     colors: {
-      primary: "#af2b62",
-      secondary: "#fff8b5",
+      primary: "#661AE6",
+      secondary: "#D926AA",
       accent: "#fcceb5",
       neutral: "#211424",
       base: {
@@ -46,7 +46,14 @@ export default {
   plugins: [require("daisyui")],
   daisyui: {
     styled: true,
-    themes: false,
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+          white: "#ffffff",
+        },
+      },
+    ],
     base: true,
     utils: true,
     logs: true,

@@ -77,7 +77,6 @@ const MovieList = () => {
     movie: MovieResult,
     isFavourite: boolean
   ): Promise<void> => {
-    const stringToAdd = isFavourite ? "Removed " : "Added ";
     await axios.get(`/api/movies/favourites/${id}`);
     await refetchFavourites();
   };
