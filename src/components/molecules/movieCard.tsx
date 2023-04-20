@@ -39,7 +39,7 @@ const MovieCard = (props: MovieCardProps) => {
     );
   if (error || !data) return <p>Error: something went wrong =)</p>;
   return (
-    <div className="grid grid-cols-3 rounded-lg bg-base-800">
+    <div className="grid grid-cols-3 rounded-lg bg-primary-focus text-primary-content">
       <div className="col-span-1">
         <MovieImage
           path={data.poster_path}

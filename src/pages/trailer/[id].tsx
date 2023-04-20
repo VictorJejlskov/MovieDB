@@ -87,7 +87,7 @@ const Trailer = () => {
         <div className="mb-2 flex w-full place-content-center">
           {trailers?.results.map((trailer) => (
             <div
-              className="w-10 rounded-full bg-secondary text-center"
+              className="w-10 rounded-full bg-secondary text-center text-secondary-content"
               key={trailer.id}
             >
               <button
@@ -105,7 +105,7 @@ const Trailer = () => {
           )}
           {featurettes?.results.map((trailer) => (
             <div
-              className="w-10 rounded-full bg-primary text-center"
+              className="w-10 rounded-full bg-primary text-center text-primary-content"
               key={trailer.id}
             >
               <button
@@ -131,7 +131,7 @@ const Trailer = () => {
                     {movieData.vote_count} Votes
                   </div>
                 </div>
-                <hr className="bg-base-850 my-3 h-px border-t-0  bg-gradient-to-r from-base-900 via-base-500 to-base-900 opacity-100" />
+                <hr className="bg-base-850 from-base-900 via-base-500 to-base-900  my-3 h-px border-t-0 bg-gradient-to-r opacity-100" />
                 <p className="line-clamp-8">{movieData.overview}</p>
                 <br />
               </div>

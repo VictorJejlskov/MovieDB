@@ -22,6 +22,7 @@ const NavMenuButton = () => {
       </label>
       <ul
         tabIndex={0}
+        //CHANGE
         className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
       >
         <li>

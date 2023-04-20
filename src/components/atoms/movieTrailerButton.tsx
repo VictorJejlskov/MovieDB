@@ -12,7 +12,7 @@ const MovieTrailerButton = (props: TrailerProps) => {
         onClick={() => {
           void router.push(`/trailer/${id}`);
         }}
-        className="w-full rounded-b-lg bg-base-600 text-accent"
+        className="w-full rounded-b-lg bg-accent-focus stroke-1 text-accent-content hover:bg-accent"
       >
         Trailer
       </button>

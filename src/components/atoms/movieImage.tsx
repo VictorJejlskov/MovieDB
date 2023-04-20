@@ -17,7 +17,7 @@ const MovieImage = (props: MovieImageProps) => {
       <div className="">
         <img
           src={posterBasePath + path}
-          className="w-full -translate-y-3 rounded-t-xl border-4 border-white"
+          className="w-full -translate-y-3 rounded-t-xl border-4 border-base-content"
           alt="Poster Image"
         />
         <div className="absolute bottom-[13%] right-[4%] z-10">

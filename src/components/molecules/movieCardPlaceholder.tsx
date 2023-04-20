@@ -1,11 +1,11 @@
 const MovieCardPlaceholder = () => {
   return (
-    <div className="grid grid-cols-3 rounded-lg bg-base-800 ">
+    <div className="grid grid-cols-3 rounded-lg bg-primary-focus text-primary-content ">
       <div className="col-span-1">
         <div className="relative mx-2 h-full">
-          <div className="flex aspect-[2/3] -translate-y-3 items-center justify-center rounded border border-gray-200 bg-gray-500 shadow">
+          <div className="flex aspect-[2/3] w-full -translate-y-3 items-center justify-center  rounded-t-xl border-4 border-[#ffffff] bg-base-100">
             <svg
-              className="w-12 text-gray-200 dark:text-gray-600"
+              className="text-base-100-content w-12"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
               fill="currentColor"
@@ -16,7 +16,7 @@ const MovieCardPlaceholder = () => {
           </div>
           <div className="-mb-1 -translate-y-3">
             <div className="">
-              <button className="w-full rounded-b-lg bg-base-600 text-accent">
+              <button className="w-full rounded-b-lg bg-accent text-accent-content">
                 ...
               </button>
             </div>
@@ -26,17 +26,17 @@ const MovieCardPlaceholder = () => {
       <div className="col-span-2">
         <div className="relative grid h-full grid-rows-6 overflow-hidden pt-4">
           <div className="row-span-6 mr-3">
-            <div className="m-auto mb-4 h-[8%] w-[70%] rounded-full bg-gray-500 text-center"></div>
-            <hr className="bg-base-850 my-3 h-px border-t-0  bg-gradient-to-r from-base-900 via-base-500 to-base-900 opacity-100" />
-            <div className="mb-5 mt-8 h-4 rounded-full bg-gray-500"></div>
-            <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
-            <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
-            <div className="mb-5 h-4 rounded-full bg-gray-500"></div>
+            <div className="m-auto mb-4 h-[8%] w-[70%] rounded-full bg-base-100 text-center"></div>
+            <hr className="my-3 h-1 border-t-0 bg-base-100  bg-gradient-to-r from-base-300 via-base-100 to-base-300 opacity-100" />
+            <div className="mb-5 mt-8 h-4 rounded-full bg-base-100"></div>
+            <div className="mb-5 h-4 rounded-full bg-base-100"></div>
+            <div className="mb-5 h-4 rounded-full bg-base-100"></div>
+            <div className="mb-5 h-4 rounded-full bg-base-100"></div>
             <div className="w-full">
               <svg
                 aria-hidden="true"
                 role="status"
-                className="m-auto h-[10%] w-[10%] animate-spin text-gray-500"
+                className="m-auto h-[10%] w-[10%] animate-spin text-base-100"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

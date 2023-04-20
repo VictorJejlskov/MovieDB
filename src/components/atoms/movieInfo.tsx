@@ -7,12 +7,12 @@ interface InfoProps {
 const MovieInfo = (props: InfoProps) => {
   const { movie: movie } = props;
   return (
-    <div className="relative h-full overflow-hidden pt-4">
+    <div className="relative h-full overflow-hidden pr-3 pt-4">
       <div className="">
         <p className="text-bold line-clamp-1 text-center text-xl font-extrabold">
           {movie.title} ({movie.release_date.split("-")[0]})
         </p>
-        <hr className="bg-base-850 my-3 h-px border-t-0  bg-gradient-to-r from-base-900 via-base-500 to-base-900 opacity-100" />
+        <hr className="my-3 h-1 border-t-0 bg-base-100 bg-gradient-to-r from-base-300 via-base-100 to-base-300 opacity-100" />
         <p className="line-clamp-5">{movie.overview}</p>
       </div>
       <div className="">
