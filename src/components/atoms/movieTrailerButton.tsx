@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 interface TrailerProps {
-  movieId: number;
+  movieId: string;
 }
 const MovieTrailerButton = (props: TrailerProps) => {
   const router = useRouter();

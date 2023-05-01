@@ -3,12 +3,17 @@ import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 
 interface FavouriteProps {
-  movieId: number;
+  movieId: string;
+  title: string;
   isFavourite: boolean;
-  onAddToFavourites: (id: string, isFavourite: boolean) => Promise<void>;
+  onAddToFavourites: (
+    id: string,
+    title: string,
+    isFavourite: boolean
+  ) => Promise<void>;
 }
 const FavouriteHeartButton = (props: FavouriteProps) => {
-  const { movieId: id, isFavourite, onAddToFavourites } = props;
+  const { movieId: id, isFavourite, onAddToFavourites, title } = props;
   const [heartColor, setHeartColor] = useState(
     isFavourite ? "#D926AA" : "#ffffff"
   );
@@ -19,7 +24,8 @@ const FavouriteHeartButton = (props: FavouriteProps) => {
     setIsDisabled(true);
     try {
       setHeartColor(isFavourite ? "#ffffff" : "#D926AA");
-      await onAddToFavourites(id.toString(), isFavourite);
+      await onAddToFavourites(id.toString(), title, isFavourite);
+      console.log("FavouriteHeartButton: " + title);
     } catch (error) {
       // Handle the error here
     }

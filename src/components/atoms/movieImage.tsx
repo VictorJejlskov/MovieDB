@@ -3,14 +3,19 @@ import FavouriteHeartButton from "./favouriteHeartButton";
 
 interface MovieImageProps {
   path: string;
-  movieId: number;
+  movieId: string;
   isFavourite: boolean;
-  onAddToFavourites: (id: string, isFavourite: boolean) => Promise<void>;
+  title: string;
+  onAddToFavourites: (
+    id: string,
+    title: string,
+    isFavourite: boolean
+  ) => Promise<void>;
 }
 
 const MovieImage = (props: MovieImageProps) => {
   const posterBasePath = "https://image.tmdb.org/t/p/w185_and_h278_bestv2";
-  const { path, movieId, isFavourite, onAddToFavourites } = props;
+  const { path, movieId, isFavourite, onAddToFavourites, title } = props;
 
   return (
     <div className="relative mx-2">
@@ -24,6 +29,7 @@ const MovieImage = (props: MovieImageProps) => {
           <FavouriteHeartButton
             movieId={movieId}
             isFavourite={isFavourite}
+            title={title}
             onAddToFavourites={onAddToFavourites}
           />
         </div>

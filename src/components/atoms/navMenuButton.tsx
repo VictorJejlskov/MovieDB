@@ -31,10 +31,14 @@ const NavMenuButton = () => {
           </button>
         </li>
         <li>
-          <a>Portfolio</a>
+          <button onClick={() => void router.push("/upcoming")}>
+            Upcoming
+          </button>
         </li>
         <li>
-          <a>About</a>
+          <button onClick={() => void router.push("/favourites")}>
+            Favourites
+          </button>
         </li>
       </ul>
     </div>

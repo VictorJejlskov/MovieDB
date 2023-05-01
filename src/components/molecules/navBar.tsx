@@ -16,7 +16,7 @@ const NavBar = (props: NavBarProps) => {
   const router = useRouter();
   const { imgPath } = props;
   return (
-    <div className="navbar sticky top-0 z-50 z-50 border-b-2 border-secondary bg-primary-focus text-primary-content">
+    <div className="navbar sticky top-0 z-50 z-50 border-b-2 border-base-content bg-base-100 text-base-content">
       <div className="navbar-start">
         <NavMenuButton />
         <button

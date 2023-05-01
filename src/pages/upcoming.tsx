@@ -6,7 +6,7 @@ import { validateSession } from "~/server/clientAuth";
 const Dashboard = () => {
   return (
     <Page title="Dashboard">
-      <MovieList url={"/api/movies/"} />
+      <MovieList url={"/api/movies/upcoming"} />
     </Page>
   );
 };

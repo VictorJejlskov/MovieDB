@@ -1,12 +1,12 @@
 import type { GetServerSidePropsContext } from "next";
 import Page from "~/components/templates/page";
-import MovieList from "~/components/templates/movieList";
 import { validateSession } from "~/server/clientAuth";
+import FavouriteList from "~/components/templates/favouriteList";
 
 const Dashboard = () => {
   return (
     <Page title="Dashboard">
-      <MovieList url={"/api/movies/"} />
+      <FavouriteList />
     </Page>
   );
 };

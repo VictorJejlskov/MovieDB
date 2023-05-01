@@ -54,15 +54,13 @@ const Trailer = () => {
       trailerList.results = trailerList.results.filter((trailer) => {
         if (trailer.type == "Trailer") return trailer;
       });
+      trailerList.results.reverse();
       featureList.results = featureList.results.filter((trailer) => {
         if (trailer.type == "Featurette") return trailer;
       });
       setChosenMovie(trailerList.results[0] as MovieTrailerResponse);
       setTrailers(trailerList);
       setFeaturettes(featureList);
-      console.log(chosenMovie);
-      console.log(trailerList);
-      console.log(featureList);
     }
   }, [data]);
   if (!id) return null;

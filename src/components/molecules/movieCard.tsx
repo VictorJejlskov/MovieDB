@@ -10,21 +10,25 @@ import axios from "axios";
 import MovieCardPlaceholder from "./movieCardPlaceholder";
 
 interface MovieCardProps {
-  movieData: MovieResult;
+  movieId: string;
   favourites: FavouriteMovie[];
-  onAddToFavourites: (id: string, isFavourite: boolean) => Promise<void>;
+  onAddToFavourites: (
+    id: string,
+    title: string,
+    isFavourite: boolean
+  ) => Promise<void>;
 }
 const MovieCard = (props: MovieCardProps) => {
-  const { movieData: movie, favourites, onAddToFavourites } = props;
+  const { movieId, favourites, onAddToFavourites } = props;
   const match = favourites.filter((fav) => {
-    return fav.movieId == movie.id.toString();
+    return fav.movieId == movieId.toString();
   });
   const isFavourite = match.length > 0;
 
   const { data, isLoading, error } = useQuery(
-    "movie-details" + movie.id.toString(),
+    "movie-details" + movieId.toString(),
     async () => {
-      return (await axios.get(`/api/movies/details?id=${movie.id}`, {}))
+      return (await axios.get(`/api/movies/details?id=${movieId}`, {}))
         .data as MovieDetailsResponse;
     },
     {
@@ -43,7 +47,8 @@ const MovieCard = (props: MovieCardProps) => {
       <div className="col-span-1">
         <MovieImage
           path={data.poster_path}
-          movieId={movie.id}
+          movieId={movieId}
+          title={data.title}
           isFavourite={isFavourite}
           onAddToFavourites={onAddToFavourites}
         />
