@@ -26,7 +26,7 @@ const MovieCard = (props: MovieCardProps) => {
   const isFavourite = match.length > 0;
 
   const { data, isLoading, error } = useQuery(
-    "movie-details" + movieId.toString(),
+    "movie-details" + movieId,
     async () => {
       return (await axios.get(`/api/movies/details?id=${movieId}`, {}))
         .data as MovieDetailsResponse;
