@@ -26,7 +26,7 @@ const NavBar = (props: NavBarProps) => {
           MovieFinder
         </button>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end h-0">
         <SearchButton />
         <ProfileIconButton path={imgPath} />
       </div>

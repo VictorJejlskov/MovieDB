@@ -12,7 +12,7 @@ export default async function handler(
       const validatedQueryParams = movieQueryParamsSchema.parse(req.query);
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const movies = await getApiMovieRequest<MovieDetailsResponse>(
-        "discover/movie",
+        "search/movie",
         validatedQueryParams
       );
       res.status(200).send(movies);
@@ -24,23 +24,6 @@ export default async function handler(
 }
 
 const movieQueryParamsSchema = z.object({
-  sort_by: z
-    .enum([
-      "popularity.asc",
-      "popularity.desc",
-      "release_date.asc",
-      "release_date.desc",
-      "revenue.asc",
-      "revenue.desc",
-      "primary_release_date.asc",
-      "primary_release_date.desc",
-      "original_title.asc",
-      "original_title.desc",
-      "vote_average.asc",
-      "vote_average.desc",
-      "vote_count.asc",
-      "vote_count.desc",
-    ])
-    .optional(),
+  query: z.string(),
   page: z.string().optional(),
 });

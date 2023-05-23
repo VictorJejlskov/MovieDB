@@ -1,14 +1,42 @@
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import type { FavouriteMovie } from "~/types/movies";
+import type {
+  FavouriteMovie,
+  MovieListResponse,
+  MovieResult,
+} from "~/types/movies";
 import MovieCard from "../molecules/movieCard";
 import MovieCardPlaceholder from "../molecules/movieCardPlaceholder";
 import { toast } from "react-toastify";
 
-const FavouriteList = () => {
+interface MovieListProps {
+  url: string;
+  searchQuery: string;
+}
+const SearchList = (props: MovieListProps) => {
   const [page, setPage] = useState<number>(1);
-  const [sortBy] = useState<string | null>(null);
+  const { url, searchQuery } = props;
+  const {
+    data: movies,
+    isLoading: moviesLoading,
+    error: moviesError,
+  } = useQuery(
+    ["movie-list", searchQuery],
+    async () => {
+      return (
+        await axios.get(url, {
+          params: {
+            page: page.toString(),
+            query: searchQuery,
+          },
+        })
+      ).data as MovieListResponse;
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
   const {
     data: favourites,
     isLoading: favouritesLoading,
@@ -52,7 +80,7 @@ const FavouriteList = () => {
   };
   const n = 15; // Or something else
 
-  if (favouritesLoading || !favourites)
+  if (moviesLoading || favouritesLoading || !favourites)
     return (
       <div className="mx-6 mt-6">
         <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
@@ -64,15 +92,16 @@ const FavouriteList = () => {
         </div>
       </div>
     );
-  if (favouritesError) return <p>Error: something went wrong =)</p>;
+  if (moviesError || favouritesError)
+    return <p>Error: something went wrong =)</p>;
 
   return (
     <div className="mx-6 mt-6">
       <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
-        {favourites?.map((movie) => (
+        {movies?.results.map((movie) => (
           <div className="" key={movie.id}>
             <MovieCard
-              movieId={movie.movieId}
+              movieId={movie.id.toString()}
               favourites={favourites}
               // eslint-disable-next-line @typescript-eslint/no-misused-promises
               onAddToFavourites={async (
@@ -106,4 +135,4 @@ const FavouriteList = () => {
   );
 };
 
-export default FavouriteList;
+export default SearchList;
