@@ -36,7 +36,7 @@ const SearchButton = () => {
               : "btn-primary btn mr-3 h-12 transition-all duration-[500ms] ease-out"
           }
           onClick={() => {
-            router.push({
+            void router.push({
               pathname: "search",
               query: { term: searchTerm },
             });
