@@ -11,8 +11,8 @@ const Dashboard = () => {
   );
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  return await validateSession(context);
-}
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//   return await validateSession(context);
+// }
 
 export default Dashboard;
