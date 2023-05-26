@@ -35,6 +35,16 @@ const Home: NextPage = () => {
           <button
             className={
               sessionData
+                ? "btn-secondary btn rounded-full text-secondary-content "
+                : "hidden"
+            }
+            onClick={() => void router.push("/dashboardtest")}
+          >
+            Dashboard Test (not logged in)
+          </button>
+          <button
+            className={
+              sessionData
                 ? "btn-primary btn rounded-full px-10 py-3 font-semibold text-secondary-content no-underline transition"
                 : "btn-secondary btn rounded-full px-10 py-3 font-semibold text-secondary-content no-underline transition"
             }
