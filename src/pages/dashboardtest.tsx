@@ -3,7 +3,7 @@ import Page from "~/components/templates/page";
 import MovieList from "~/components/templates/movieList";
 import { validateSession } from "~/server/clientAuth";
 
-const Dashboard = () => {
+const DashboardTest = () => {
   return (
     <Page title="Dashboard">
       <MovieList url={"/api/movies/"} />
@@ -11,8 +11,4 @@ const Dashboard = () => {
   );
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  return await validateSession(context);
-}
-
-export default Dashboard;
+export default DashboardTest;
