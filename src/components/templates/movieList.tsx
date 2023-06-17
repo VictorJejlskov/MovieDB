@@ -82,13 +82,36 @@ const MovieList = (props: MovieListProps) => {
 
   if (moviesLoading || favouritesLoading || !favourites)
     return (
-      <div className="mx-6 mt-6">
-        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
-          {[...Array<number>(n)].map((e, i) => (
-            <div className="w-full" key={i}>
-              <MovieCardPlaceholder />
-            </div>
-          ))}
+      <div>
+        <div className="place-center left-0 right-0 top-0 z-50 flex place-content-center">
+          <button
+            className="mr-2"
+            onClick={() => {
+              if (page > 1) setPage(page - 1);
+            }}
+          >
+            {"<-"}
+          </button>
+          <div>
+            Page {page}, showing results {page * 20 - 19} to {page * 20}
+          </div>
+          <button
+            className="ml-2"
+            onClick={() => {
+              setPage(page + 1);
+            }}
+          >
+            {"->"}
+          </button>
+        </div>
+        <div className="mx-6 mt-6">
+          <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+            {[...Array<number>(n)].map((e, i) => (
+              <div className="w-full" key={i}>
+                <MovieCardPlaceholder />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -96,40 +119,47 @@ const MovieList = (props: MovieListProps) => {
     return <p>Error: something went wrong =)</p>;
 
   return (
-    <div className="mx-6 mt-6">
-      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
-        {movies?.results.map((movie) => (
-          <div className="" key={movie.id}>
-            <MovieCard
-              movieId={movie.id.toString()}
-              favourites={favourites}
-              // eslint-disable-next-line @typescript-eslint/no-misused-promises
-              onAddToFavourites={async (
-                id: string,
-                title: string,
-                isFavourite: boolean
-              ): Promise<void> => {
-                await notify(id, title, isFavourite);
-              }}
-            />
-          </div>
-        ))}
-      </div>
-      <div className="absolute top-8">
+    <div>
+      <div className="place-center left-0 right-0 top-0 z-50 flex place-content-center">
         <button
-          onClick={() => {
-            setPage(page + 1);
-          }}
-        >
-          Next Page
-        </button>
-        <button
+          className="mr-2"
           onClick={() => {
             if (page > 1) setPage(page - 1);
           }}
         >
-          Previous Page
+          {"<-"}
         </button>
+        <div>
+          Page {page}, showing results {page * 20 - 19} to {page * 20}
+        </div>
+        <button
+          className="ml-2"
+          onClick={() => {
+            setPage(page + 1);
+          }}
+        >
+          {"->"}
+        </button>
+      </div>
+      <div className="mx-6 mt-6">
+        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+          {movies?.results.map((movie) => (
+            <div className="" key={movie.id}>
+              <MovieCard
+                movieId={movie.id.toString()}
+                favourites={favourites}
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                onAddToFavourites={async (
+                  id: string,
+                  title: string,
+                  isFavourite: boolean
+                ): Promise<void> => {
+                  await notify(id, title, isFavourite);
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
