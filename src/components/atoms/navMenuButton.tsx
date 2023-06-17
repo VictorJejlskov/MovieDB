@@ -40,6 +40,16 @@ const NavMenuButton = () => {
             Favourites
           </button>
         </li>
+        <li>
+          <button onClick={() => void router.push("/trending")}>
+            Trending
+          </button>
+        </li>
+        <li>
+          <button onClick={() => void router.push("/nowplaying")}>
+            Now Playing
+          </button>
+        </li>
       </ul>
     </div>
   );

@@ -14,7 +14,7 @@ import type {
 
 const Trailer = () => {
   const router = useRouter();
-  const id = router.query.id! as string; // Use non-null assertion operator to guarantee that id is a string
+  const id = router.query.id! as string;
   const [chosenMovie, setChosenMovie] = useState<MovieTrailerResponse>();
   const [trailers, setTrailers] = useState<MovieTrailerListResponse>();
   const [featurettes, setFeaturettes] = useState<MovieTrailerListResponse>();
